@@ -15,12 +15,12 @@ def home(request):
     context = {
         'posts': Post.objects.all()
     }
-    return render(request, 'blog/home.html', context)
+    return render(request, 'Blog/home.html', context)
 
 
 class PostListView(ListView):
     model = Post
-    template_name = 'blog/home.html'
+    template_name = 'Blog/home.html'
     context_object_name = 'posts'
     ordering = ['-date_posted']
     paginate_by = 5
@@ -28,7 +28,7 @@ class PostListView(ListView):
 
 class UserPostListView(ListView):
     model = Post
-    template_name = 'blog/user_posts.html'
+    template_name = 'Blog/user_posts.html'
     context_object_name = 'posts'
     paginate_by = 5
 
@@ -77,4 +77,4 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 
 
 def about(request):
-    return render(request, 'blog/about.html', {'title': 'About IBlog'})
+    return render(request, 'Blog/about.html', {'title': 'About IBlog'})
